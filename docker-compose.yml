@@ -22,6 +22,6 @@ services:
   phpmyadmin:
     image: phpmyadmin:5.2.1
     ports:
-      - 9011:80
+      - 9040:80
     environment:
       - PMA_ARBITRARY=1
