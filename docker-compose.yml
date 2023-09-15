@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  staging02-app:
+    container_name: staging02-app
+    build:
+      context: .
+
+    volumes:
+      - ./staging02-app:/var/www/html
+    ports:
+      - 9040:80
+    restart: unless-stopped
+  
+  mysql_db:
+    image: mysql:8.0.33
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: staging_app
+    ports:
+    - 3340:3306
+  
+  phpmyadmin:
+    image: phpmyadmin:5.2.1
+    ports:
+      - 9011:80
+    environment:
+      - PMA_ARBITRARY=1
